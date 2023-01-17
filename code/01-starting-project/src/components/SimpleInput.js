@@ -4,6 +4,7 @@ const SimpleInput = (props) => {
   const nameInputRef = useRef();
   const [enteredName, setEnteredName] = useState("");
   const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
+  const [enteredNameTouched, setEnteredNameTouched] = useState(false); 
 
   useEffect(() => {
     if (enteredNameIsValid) {
@@ -31,6 +32,8 @@ const SimpleInput = (props) => {
     //nameInputRef.current.value = ''; => Not ideal, manipulates the DOM
     setEnteredName("");
   };
+
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
   const nameInputClasses = enteredNameIsValid
     ? "form-control"
